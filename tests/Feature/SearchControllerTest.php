@@ -172,11 +172,11 @@ class SearchControllerTest extends TestCase {
 
     //This should let us see that RestaurantName Search work for api v5.12.300
     public function testSearchWithVersionUrl() {
-         $response = $this->json('GET', 'api/v5.12.300/search/filter?RestaurantName=the&sort=averageProductPrice');
+         $response = $this->json('GET', 'api/v5.12.300/search/filter?name=the&sort=averageProductPrice');
         $expected = '[
         {
             "id": 98001302,
-            "name": "The Nighttest",
+            "RestaurantName": "The Nighttest",
             "branch": "",
             "phone": "053-4307449",
             "email": "",
@@ -199,7 +199,7 @@ class SearchControllerTest extends TestCase {
         },
         {
             "id": 98001322,
-            "name": "The Time",
+            "RestaurantName": "The Time",
             "branch": "",
             "phone": "020-6709301",
             "email": "",
@@ -222,7 +222,7 @@ class SearchControllerTest extends TestCase {
         },
         {
             "id": 98001225,
-            "name": "The Nightshop",
+            "RestaurantName": "The Nightshop",
             "branch": "",
             "phone": "",
             "email": "private-email@takeaway.com",

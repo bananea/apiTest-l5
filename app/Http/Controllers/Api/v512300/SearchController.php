@@ -92,13 +92,14 @@ class SearchController extends Controller
        $restaurant = new Restaurant;
         $restaurantQuery = $restaurant->newQuery();
 
-        // Search for a user based on their name.
-        if ($request->has('RestaurantName')) {
-            $restaurantQuery->where('name', $request->input('RestaurantName'))
-                ->orWhere('name', 'like', '%' . $request->input('RestaurantName') . '%');
+        // Search for a restaurant based on their name.
+        if ($request->has('name')) {
+            $restaurantQuery
+                    ->where('name', $request->input('name'))
+                ->orWhere('name', 'like', '%' . $request->input('name') . '%')
+                ;
         }
 
-        // Search for a user based on their company.
         if ($request->has('open')) {
             $restaurantQuery->where('open', $request->input('open'));
         }
@@ -106,10 +107,6 @@ class SearchController extends Controller
         if ($request->has('sort') && Schema::hasColumn($restaurant->getTable(), $request->input('sort'))) {
                 $sort = $request->input('sort');
         }
-
-        // Continue for all of the filters.
-
-        // Get the results and return them.
-        return $restaurantQuery->orderBy($sort, 'desc')->get();
+        return $restaurantQuery->orderBy($sort, 'desc')->select('id', 'name as RestaurantName',  'branch', 'phone', 'email', 'logo', 'address', 'housenumber', 'postcode', 'city', 'latitude', 'longitude', 'url', 'open', 'bestMatch', 'newestScore', 'ratingAverage', 'popularity', 'averageProductPrice', 'deliveryCosts', 'minimumOrderAmount')->get();
     }
 }
