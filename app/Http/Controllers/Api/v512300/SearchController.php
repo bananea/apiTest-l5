@@ -89,6 +89,7 @@ class SearchController extends Controller
     }
  
     public function filter(Request $request, Restaurant $restaurant) {
+       $restaurant = new Restaurant;
         $restaurantQuery = $restaurant->newQuery();
 
         // Search for a user based on their name.
@@ -109,7 +110,6 @@ class SearchController extends Controller
         // Continue for all of the filters.
 
         // Get the results and return them.
-        $values = $restaurantQuery->orderBy($sort, 'desc')->get();
-        return $values;
+        return $restaurantQuery->orderBy($sort, 'desc')->get();
     }
 }
