@@ -7,4 +7,5 @@ server could be started with: php artisan serve --port=8888
 http://localhost:8888/search/filter?open=0&name=Ont&sort=bestMatch
 for the specific api version: 
 http://localhost:8888/api/v5.12.300/search/filter?name=the
-5 a sample of a apidoc filter is situated in :Apidoc/index.html 
+
+5. a sample of a apidoc filter is situated in :Apidoc/index.html 
